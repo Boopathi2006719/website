@@ -1,60 +1,44 @@
-// Load saved data
-window.onload = function () {
-    let savedUser = localStorage.getItem("user");
-    if (savedUser) {
-        document.getElementById("welcome").innerText = "Welcome back " + savedUser;
-    }
-
-    showTasks();
-};
-
-// Login system
-function login() {
-    let name = document.getElementById("username").value;
-    localStorage.setItem("user", name);
-    document.getElementById("welcome").innerText = "Welcome " + name;
+body {
+    font-family: Arial;
+    background: #f4f4f4;
+    transition: 0.3s;
 }
 
-// Add Task
-function addTask() {
-    let task = document.getElementById("task").value;
-
-    if (task === "") return;
-
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.push(task);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-
-    showTasks();
+.dark {
+    background: #111;
+    color: white;
 }
 
-// Show Tasks
-function showTasks() {
-    let list = document.getElementById("list");
-    list.innerHTML = "";
-
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-
-    tasks.forEach((t, index) => {
-        let li = document.createElement("li");
-        li.innerText = t;
-
-        let btn = document.createElement("button");
-        btn.innerText = "❌";
-        btn.onclick = function () {
-            deleteTask(index);
-        };
-
-        li.appendChild(btn);
-        list.appendChild(li);
-    });
+.container {
+    width: 400px;
+    margin: auto;
+    text-align: center;
 }
 
-// Delete Task
-function deleteTask(index) {
-    let tasks = JSON.parse(localStorage.getItem("tasks"));
-    tasks.splice(index, 1);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+input {
+    padding: 10px;
+    width: 80%;
+    margin: 10px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+li {
+    list-style: none;
+    background: #ddd;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.completed {
+    text-decoration: line-through;
+}
     showTasks();
 }
 
