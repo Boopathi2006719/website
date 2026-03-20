@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boopathi App</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Todo App</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>🚀 My Web App</h1>
+<div class="container">
 
-    <!-- Login Section -->
-    <div class="box">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Enter name">
-        <button onclick="login()">Login</button>
-        <p id="welcome"></p>
-    </div>
+    <h1>🚀 Advanced Todo</h1>
 
-    <!-- Todo Section -->
-    <div class="box">
-        <h2>Todo List</h2>
-        <input type="text" id="task" placeholder="Enter task">
+    <!-- Dark Mode -->
+    <button onclick="toggleDark()">🌙</button>
+
+    <!-- Input -->
+    <div class="input-box">
+        <input type="text" id="taskInput" placeholder="Enter task...">
         <button onclick="addTask()">Add</button>
-        <ul id="list"></ul>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Search -->
+    <input type="text" id="search" placeholder="Search..." onkeyup="searchTask()">
+
+    <!-- Filters -->
+    <div class="filters">
+        <button onclick="filterTasks('all')">All</button>
+        <button onclick="filterTasks('done')">Completed</button>
+        <button onclick="filterTasks('pending')">Pending</button>
+    </div>
+
+    <!-- Task Count -->
+    <p id="count"></p>
+
+    <!-- Task List -->
+    <ul id="list"></ul>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
